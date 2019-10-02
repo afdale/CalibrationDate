@@ -13,7 +13,8 @@ class CDContainer {
     var mMasaberlaku : String? = null
     var mNext_kalibrasi : String? = null
 
-    constructor(key:Long?, mc: String?, id:String?, lokasi:String?, tgl_kalibrasi: String?, hasil: String?, masaberlaku: String?, next_kalibrasi: String?){
+    constructor(key:Long?, mc: String?, id:String?, lokasi:String?,
+                tgl_kalibrasi: String?, hasil: String?, masaberlaku: String?, next_kalibrasi: String?){
         this.mMc = mc
         this.mID = id
         this.mKey = key

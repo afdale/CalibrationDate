@@ -25,6 +25,8 @@ class AddCD : AppCompatActivity() {
     var myLokasi : String? = ""
     var myMBerlaku : String? = ""
     var myHasil : String? = ""
+    var myKal1 : String? = ""
+    var myKal2 : String? = ""
     var myKey : Long? = null
     var clicked: String = ""
 
@@ -61,14 +63,20 @@ class AddCD : AppCompatActivity() {
         myLokasi = getIntent().getStringExtra("myLokasi")
         myMBerlaku = getIntent().getStringExtra("myMBerlaku")
         myHasil = getIntent().getStringExtra("myHasil")
+        myKal1 = getIntent().getStringExtra("myKal1")
+        myKal2 = getIntent().getStringExtra("myKal2")
         //kalibrasi = getIntent().getStringExtra("kalibrasi")
 
 
 
         mcTVedit.text = myMC
         idTVedit.text = myID
+        myKal1 = kalibrasi1.toString()
+        myKal2 = kalibrasi2.toString()
         lokasiTVedit.setText(myLokasi)
         mberlaku.setText(myMBerlaku)
+
+
 
         kalibrasi1 = this.kalibrasi
         kalibrasi1!!.text = "yyyy-mm-dd"
@@ -148,6 +156,7 @@ class AddCD : AppCompatActivity() {
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         kalibrasi1!!.text = sdf.format(cal.getTime())
 
+
     }
 
     private fun updateDateInView2() {
@@ -173,9 +182,11 @@ class AddCD : AppCompatActivity() {
         if (
             mcTVedit.text!=="N/A"&&idTVedit.text!=="N/A"){
             myLokasi = lokasiTVedit.text.toString()
-            //kalibrasi1!!.text.toString()
-            //myHasil = radio_group.toString()
+            myKal1 = kalibrasi1!!.text.toString()
+            myKal2 = kalibrasi2!!.text.toString()
+            myHasil = radio_group.toString()
             myMBerlaku = mberlaku.text.toString()
+
 
             DoAddDataCD (this).execute()
         } else {
@@ -244,7 +255,9 @@ class AddCD : AppCompatActivity() {
                     z = "Please check your internet connection"
 
                 } else {
-                    val query = "INSERT INTO calibrationdate (Mesin,ID, Lokasi, Hasil, Masaberlaku) VALUES ('$myMC','$myID','$myLokasi','$myHasil','$myMBerlaku')"
+                    val query = "INSERT INTO calibrationdate " +
+                            "(Mesin, ID, Lokasi, Masaberlaku, Kalibrasi1, Hasil, Kalibrasi2) " +
+                            "VALUES ('$myMC','$myID','$myLokasi', '$myMBerlaku','$myKal1','$clicked','$myKal2')"
                     val stmt: Statement = con.createStatement()
                     stmt.executeUpdate(query)
                     z = "Update Successfull"
