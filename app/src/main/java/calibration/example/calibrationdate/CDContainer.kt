@@ -8,21 +8,21 @@ class CDContainer {
     var mID : String? = null
     var mKey : Long? = null
     var mLokasi : String? = null
-    var mTgl_kalibrasi : String? = null
+    var mKal1 : String? = null
     var mHasil : String? = null
     var mMasaberlaku : String? = null
-    var mNext_kalibrasi : String? = null
+    var mKal2 : String? = null
 
     constructor(key:Long?, mc: String?, id:String?, lokasi:String?,
-                tgl_kalibrasi: String?, hasil: String?, masaberlaku: String?, next_kalibrasi: String?){
+                kal1: String?, hasil: String?, masaberlaku: String?, kal2: String?){
         this.mMc = mc
         this.mID = id
         this.mKey = key
         this.mLokasi = lokasi
-        this.mTgl_kalibrasi = tgl_kalibrasi
+        this.mKal1 = kal1
         this.mHasil = hasil
         this.mMasaberlaku = masaberlaku
-        this.mNext_kalibrasi = next_kalibrasi
+        this.mKal2 = kal2
     }
 
     fun getKey() : Long?{
@@ -58,11 +58,11 @@ class CDContainer {
     }
 
     fun  getTgl_kalibrasi() : String? {
-        return mTgl_kalibrasi
+        return mKal1
     }
 
     fun  setTgl_kalibrasi (tgl_kalibrasi: String?){
-        mTgl_kalibrasi = tgl_kalibrasi
+        mKal1 = tgl_kalibrasi
     }
 
     fun  getHasil() : String? {
@@ -82,10 +82,10 @@ class CDContainer {
     }
 
     fun  getNext_kalibrasi() : String? {
-        return mNext_kalibrasi
+        return mKal2
     }
 
     fun  setNext_kalibrasi (next_kalibrasi: String?){
-        mNext_kalibrasi = next_kalibrasi
+        mKal2 = next_kalibrasi
     }
 }

@@ -169,6 +169,8 @@ class AddCD : AppCompatActivity() {
         super.onResume()
         mcTVedit.text = myMC
         idTVedit.text = myID
+        myKal1 = kalibrasi1.toString()
+        myKal2 = kalibrasi2.toString()
         lokasiTVedit.setText(myLokasi)
         mberlaku.setText(myMBerlaku)
 
@@ -180,7 +182,8 @@ class AddCD : AppCompatActivity() {
 
     fun goUpload(view: View){
         if (
-            mcTVedit.text!=="N/A"&&idTVedit.text!=="N/A"){
+            mcTVedit.text!=="N/A"&&idTVedit.text!=="N/A")
+        {
             myLokasi = lokasiTVedit.text.toString()
             myKal1 = kalibrasi1!!.text.toString()
             myKal2 = kalibrasi2!!.text.toString()

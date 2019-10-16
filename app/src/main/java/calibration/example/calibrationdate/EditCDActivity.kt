@@ -28,6 +28,8 @@ class EditCDActivity : AppCompatActivity() {
     var myLokasi : String? = ""
     var myHasil : String? = ""
     var myMBerlaku : String? = ""
+    var myKal1 : String? = ""
+    var myKal2 : String? = ""
     var myKey : Long? = null
     var clicked: String = ""
 
@@ -65,6 +67,8 @@ class EditCDActivity : AppCompatActivity() {
         idTVedit.text = myID
         lokasiTVedit.setText(myLokasi)
         mberlaku.setText(myMBerlaku)
+        myKal1 = kalibrasi1.toString()
+        myKal2 = kalibrasi2.toString()
 
         kalibrasi1 = this.kalibrasi
         kalibrasi1!!.text = "yyyy-mm-dd"
@@ -155,6 +159,8 @@ class EditCDActivity : AppCompatActivity() {
         super.onResume()
         mcTVedit.text = myMC
         idTVedit.text = myID
+        myKal1 = kalibrasi1.toString()
+        myKal2 = kalibrasi2.toString()
         lokasiTVedit.setText(myLokasi)
         mberlaku.setText(myMBerlaku)
 
@@ -166,6 +172,14 @@ class EditCDActivity : AppCompatActivity() {
     }
 
     fun goUpload (view: View){
+
+        myLokasi = lokasiTVedit.text.toString()
+        myKal1 = kalibrasi1!!.text.toString()
+        myKal2 = kalibrasi2!!.text.toString()
+        myHasil = radio_group.toString()
+        myMBerlaku = mberlaku.text.toString()
+
+
         DoUpdateDataCD(this).execute()
     }
 
@@ -228,7 +242,9 @@ class EditCDActivity : AppCompatActivity() {
                 if (con == null) {
                     z = "Please check your internet connection"
                 } else {
-                    val query ="UPDATE calibrationdate SET Mesin='$myMC', ID='$myID', Lokasi='$myLokasi', Tgl_kalibrasi='$kalibrasi1', Hasil='$radio_group', Masaberlaku='$myMBerlaku', Next_kalibrasi='$kalibrasi2' WHERE Kunci=$myKey"
+                    val query ="UPDATE calibrationdate" +
+                            "SET Mesin='$myMC', ID='$myID', Lokasi='$myLokasi', Masaberlaku='$myMBerlaku', " +
+                            "Kalibrasi1='$myKal1', Hasil='$clicked',  Kalibrasi2='$myKal2' WHERE Kunci=$myKey"
                     val stmt: Statement = con.createStatement()
                     stmt.executeUpdate(query)
                     z = "Update Successfull"

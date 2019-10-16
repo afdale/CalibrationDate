@@ -42,10 +42,10 @@ class MainActivity : AppCompatActivity() {
                 launch2.putExtra("id", listCD[position].mID)
                 launch2.putExtra("key", listCD[position].mKey)
                 launch2.putExtra("lokasi", listCD[position].mLokasi)
-                launch2.putExtra("tgl_kalibrasi", listCD[position].mTgl_kalibrasi)
+                launch2.putExtra("tgl_kalibrasi", listCD[position].mKal1)
                 launch2.putExtra("hasil", listCD[position].mHasil)
                 launch2.putExtra("masaberlaku", listCD[position].mMasaberlaku)
-                launch2.putExtra("next_kalibrasi", listCD[position].mNext_kalibrasi)
+                launch2.putExtra("next_kalibrasi", listCD[position].mKal2)
                 startActivity(launch2)
             }
 
@@ -111,10 +111,10 @@ class MainActivity : AppCompatActivity() {
                                         rs.getString("Mesin"),
                                         rs.getString("ID"),
                                         rs.getString("Lokasi"),
-                                        rs.getString("Tgl_kalibrasi"),
+                                        rs.getString("Kalibrasi1"),
                                         rs.getString("Hasil"),
                                         rs.getString("Masaberlaku"),
-                                        rs.getString("Next_kalibrasi")
+                                        rs.getString("Kalibrasi2")
                                     )
                                 )
                             } catch (ex:Exception){
